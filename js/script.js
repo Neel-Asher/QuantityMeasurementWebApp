@@ -1,4 +1,4 @@
-import { getUnits } from "./api.js";
+import { getUnits, getHistory } from "./api.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -60,36 +60,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     async function loadUnits(type) {
+        const units = await getUnits(type);
 
-    const units = await getUnits(type);
+        if (!units || units.length === 0) {
+            showError("No units found for this type.");
+            return;
+        }
 
-    if (!units || units.length === 0) {
-        showError("No units found for this type.");
-        return;
+        const selects = document.querySelectorAll("select");
+
+        selects.forEach(select => {
+            select.innerHTML = "";
+
+            units.forEach(unit => {
+                const option = document.createElement("option");
+                option.value = unit.symbol;
+                option.textContent = unit.label;
+                select.appendChild(option);
+            });
+        });
     }
 
-    const selects = document.querySelectorAll("select");
-
-    selects.forEach(select => {
-        select.innerHTML = "";
-
-        units.forEach(unit => {
-            const option = document.createElement("option");
-            option.value = unit.symbol;
-            option.textContent = unit.label;
-            select.appendChild(option);
-        });
-    });
-
-}
-
     async function loadHistory() {
-        try {
-            const res = await fetch("http://localhost:3000/history");
-            await res.json();
-        } catch (error) {
-            console.log("History not loaded.");
+        const historyData = await getHistory();
+
+        if (!historyData || historyData.length === 0) {
+            console.log("No history yet.");
+            return;
         }
+
+        console.log("History:", historyData);
     }
 
     function showError(message) {

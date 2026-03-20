@@ -6,7 +6,7 @@ export async function getUnits(type) {
 
         if (!res.ok) {
             throw new Error(`HTTP ${res.status}`);
-        }   
+        }
 
         return await res.json();
     } catch (error) {
@@ -23,13 +23,13 @@ export async function getConversion(from, to) {
         throw new Error(`HTTP ${res.status}`);
     }
 
-    const data = await res.json();   
+    const data = await res.json();
 
     if (!data.length) {
         throw new Error("No conversion found");
     }
 
-    return data[0];   
+    return data[0];
 }
 
 export async function saveHistory(record) {
@@ -49,5 +49,25 @@ export async function saveHistory(record) {
         return await res.json();
     } catch (error) {
         console.error("Failed to save history:", error);
+    }
+}
+
+export async function getHistory() {
+    try {
+        const res = await fetch(`${BASE_URL}/history`);
+
+        if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
+        }
+
+        const data = await res.json();
+
+        return data.sort((a, b) =>
+            new Date(b.timestamp) - new Date(a.timestamp)
+        );
+
+    } catch (error) {
+        console.error("Error fetching history:", error);
+        return [];
     }
 }
