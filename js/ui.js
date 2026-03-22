@@ -105,3 +105,37 @@ export function toggleResult(show) {
 
     resultBox.style.display = show ? "block" : "none";
 }
+
+export function renderHistory(records) {
+
+    const list = document.querySelector("#history-list");
+
+    // Safety check
+    if (!list) {
+        console.warn("renderHistory: history list not found");
+        return;
+    }
+
+    // Handle undefined
+    if (!records) {
+        records = [];
+    }
+
+    // Clear existing
+    list.innerHTML = "";
+
+    // Empty state
+    if (!records.length) {
+        list.innerHTML = "<li>No history yet.</li>";
+        return;
+    }
+
+    // Populate list
+    records.forEach(r => {
+        const li = document.createElement("li");
+
+        li.textContent = `${r.expression} = ${r.result} (${new Date(r.timestamp).toLocaleString()})`;
+
+        list.appendChild(li);
+    });
+}

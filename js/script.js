@@ -1,6 +1,6 @@
 import { getUnits, getHistory } from "./api.js";
 import { applyConversion, compareValues, performArithmetic } from "./conversion.js";
-import { populateDropdown, setActive, showResult, toggleOperators, toggleResult } from "./ui.js";
+import { populateDropdown, setActive, showResult, toggleOperators, toggleResult, renderHistory } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
         }
 
-        console.log("History:", historyData);
+        renderHistory(historyData);
     }
 
     function showError(message) {
