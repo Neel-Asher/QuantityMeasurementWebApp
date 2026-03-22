@@ -1,5 +1,6 @@
 import { getUnits, getHistory } from "./api.js";
 import { applyConversion, compareValues, performArithmetic } from "./conversion.js";
+import { populateDropdown } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -71,14 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const selects = document.querySelectorAll("select");
 
         selects.forEach(select => {
-            select.innerHTML = "";
-
-            units.forEach(unit => {
-                const option = document.createElement("option");
-                option.value = unit.symbol;
-                option.textContent = unit.label;
-                select.appendChild(option);
-            });
+            populateDropdown(select, units);
         });
     }
 
