@@ -17,6 +17,10 @@ export async function getUnits(type) {
 
 export async function getConversion(from, to) {
 
+    if (from === to) {
+        return { factor: 1, formula: null };
+    }
+
     const res = await fetch(`${BASE_URL}/conversions?from=${from}&to=${to}`);
 
     if (!res.ok) {

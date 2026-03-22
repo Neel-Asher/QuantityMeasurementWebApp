@@ -75,140 +75,175 @@
   ],
   "conversions": [
     {
-      "id": "1",
       "from": "km",
       "to": "m",
       "factor": 1000,
-      "formula": null
+      "id": "nia-2difdbY"
     },
     {
-      "id": "2",
+      "from": "km",
+      "to": "cm",
+      "factor": 100000,
+      "id": "Ljc9sw3Lqzc"
+    },
+    {
+      "from": "km",
+      "to": "mm",
+      "factor": 1000000,
+      "id": "_5KosjanEvo"
+    },
+    {
+      "from": "m",
+      "to": "km",
+      "factor": 0.001,
+      "id": "PI5cNMQbYYk"
+    },
+    {
       "from": "m",
       "to": "cm",
       "factor": 100,
-      "formula": null
+      "id": "iFM0ChKnFIk"
     },
     {
-      "id": "3",
+      "from": "m",
+      "to": "mm",
+      "factor": 1000,
+      "id": "YbSfRV7WNaM"
+    },
+    {
+      "from": "cm",
+      "to": "km",
+      "factor": 0.00001,
+      "id": "55dI0vWY5Pg"
+    },
+    {
+      "from": "cm",
+      "to": "m",
+      "factor": 0.01,
+      "id": "7yJxI20jWu4"
+    },
+    {
       "from": "cm",
       "to": "mm",
       "factor": 10,
-      "formula": null
+      "id": "1K8mCljVfVg"
     },
     {
-      "id": "4",
+      "from": "mm",
+      "to": "km",
+      "factor": 0.000001,
+      "id": "Xon9yjtL8k8"
+    },
+    {
+      "from": "mm",
+      "to": "m",
+      "factor": 0.001,
+      "id": "180AFaMz9ZA"
+    },
+    {
+      "from": "mm",
+      "to": "cm",
+      "factor": 0.1,
+      "id": "s7gdmdKAeNM"
+    },
+    {
       "from": "kg",
       "to": "g",
       "factor": 1000,
-      "formula": null
+      "id": "7OxQ8bBqQaQ"
     },
     {
-      "id": "5",
+      "from": "kg",
+      "to": "mg",
+      "factor": 1000000,
+      "id": "nZA-99vlzdM"
+    },
+    {
+      "from": "g",
+      "to": "kg",
+      "factor": 0.001,
+      "id": "gY1kUo_Is6E"
+    },
+    {
       "from": "g",
       "to": "mg",
       "factor": 1000,
-      "formula": null
+      "id": "leMSALMDmEA"
     },
     {
-      "id": "6",
+      "from": "mg",
+      "to": "kg",
+      "factor": 0.000001,
+      "id": "kz3sR6cfRCI"
+    },
+    {
+      "from": "mg",
+      "to": "g",
+      "factor": 0.001,
+      "id": "G546VQj4jT8"
+    },
+    {
       "from": "L",
       "to": "mL",
       "factor": 1000,
-      "formula": null
+      "id": "c0cDn5650WE"
     },
     {
-      "id": "7",
+      "from": "mL",
+      "to": "L",
+      "factor": 0.001,
+      "id": "L_jJyRqEPrk"
+    },
+    {
       "from": "C",
       "to": "F",
-      "factor": null,
-      "formula": "(x*9/5)+32"
+      "formula": "(x*9/5)+32",
+      "id": "QbPIR0Bqe9Q"
     },
     {
-      "id": "8",
       "from": "F",
       "to": "C",
-      "factor": null,
-      "formula": "(x-32)*5/9"
+      "formula": "(x-32)*5/9",
+      "id": "R-YGT5vELz4"
     },
     {
-      "id": "9",
       "from": "C",
       "to": "K",
-      "factor": null,
-      "formula": "x+273.15"
+      "formula": "x+273.15",
+      "id": "ayY21GwgW1I"
     },
     {
-      "id": "10",
       "from": "K",
       "to": "C",
-      "factor": null,
-      "formula": "x-273.15"
+      "formula": "x-273.15",
+      "id": "Vej7R6MHBlA"
     }
   ],
   "history": [
     {
-      "id": "0588",
       "type": "Length",
       "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:14:52.370Z"
+      "expression": "1 km → cm",
+      "result": 100000,
+      "timestamp": "2026-03-22T11:50:33.551Z",
+      "id": "VqcEakY_yls"
     },
     {
-      "id": "a8e6",
       "type": "Length",
       "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:16:08.958Z"
+      "expression": "10 km → km",
+      "result": 10,
+      "timestamp": "2026-03-22T11:50:37.919Z",
+      "id": "f5XW8d66sO8"
     },
     {
-      "id": "4829",
       "type": "Length",
       "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:26:11.276Z"
-    },
-    {
-      "id": "9147",
-      "type": "Length",
-      "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:26:12.318Z"
-    },
-    {
-      "id": "e0f3",
-      "type": "Length",
-      "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:26:13.502Z"
-    },
-    {
-      "id": "422e",
-      "type": "Length",
-      "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:26:55.356Z"
-    },
-    {
-      "id": "7f24",
-      "type": "Length",
-      "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:26:57.271Z"
-    },
-    {
-      "id": "6d97",
-      "type": "Length",
-      "action": "Conversion",
-      "expression": "1 km → m",
-      "result": 1000,
-      "timestamp": "2026-03-20T05:26:59.785Z"
+      "expression": "10 km → km",
+      "result": 10,
+      "timestamp": "2026-03-22T11:50:39.511Z",
+      "id": "omN_nQ69XkU"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
