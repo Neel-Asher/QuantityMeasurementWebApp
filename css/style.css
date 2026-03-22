@@ -162,3 +162,43 @@ body {
     background-color: #fff3cd;
     transition: 0.3s;
 }
+
+#operator-selector {
+    display: none;
+    gap: 12px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.operator-btn {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.operator-btn:hover {
+    background: #D4D4D4;
+}
+
+.operator-btn.active {
+    background-color: #5B507A;
+    color: white;
+}
+
+#result-box {
+    text-align: center;
+}
+
+#result-value {
+    font-size: 42px;
+    font-weight: bold;
+}
+
+#result-unit {
+    font-size: 18px;
+    margin-top: 5px;
+}

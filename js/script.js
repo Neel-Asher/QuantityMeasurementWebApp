@@ -1,6 +1,6 @@
 import { getUnits, getHistory } from "./api.js";
 import { applyConversion, compareValues, performArithmetic } from "./conversion.js";
-import { populateDropdown, setActive, showResult } from "./ui.js";
+import { populateDropdown, setActive, showResult, toggleOperators, toggleResult } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -47,6 +47,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             btn.addEventListener("click", () => {
                 state.action = btn.innerText.trim();
                 setActive(actionContainer, btn, ".action-btn");
+                const isArithmetic = state.action === "Arithmetic";
+                toggleOperators(isArithmetic);
+                toggleResult(isArithmetic); 
             });
         });
     }
@@ -57,14 +60,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (firstCard) firstCard.classList.add("active");
         if (firstAction) firstAction.classList.add("active");
-    }
-
-    function toggleOperators(show) {
-        const operatorRow = document.querySelector("#operators");
-
-        if (!operatorRow) return;
-
-        operatorRow.style.display = show ? "flex" : "none";
     }
 
     async function loadUnits(type) {

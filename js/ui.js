@@ -80,3 +80,28 @@ export function showResult(value, unitSymbol) {
         valueEl.classList.remove("highlight");
     }, 1500);
 }
+
+export function toggleOperators(show) {
+
+    const operatorRow = document.querySelector("#operator-selector");
+
+    // Safety check
+    if (!operatorRow) {
+        console.warn("toggleOperators: operator selector not found");
+        return;
+    }
+
+    // Show / Hide
+    operatorRow.style.display = show ? "flex" : "none";
+}
+
+export function toggleResult(show) {
+    const resultBox = document.querySelector("#result-box");
+
+    if (!resultBox) {
+        console.warn("Result box not found");
+        return;
+    }
+
+    resultBox.style.display = show ? "block" : "none";
+}
