@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setDefaultActive();
 
     toggleOperators(false);
+    toggleResult(false);
 
     try {
         await loadUnits("Length");
@@ -29,54 +30,60 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadHistory();
 
     function attachEventListeners() {
-        const typeContainer = document.querySelector("#types");
-        const actionContainer = document.querySelector("#actions");
 
-        const typeCards = document.querySelectorAll(".type-card");
-        const actionButtons = document.querySelectorAll(".action-btn");
+        const typeSelector = document.querySelector("#types");
+        const actionSelector = document.querySelector("#actions");
 
-        typeCards.forEach(card => {
+        const fromInput = document.querySelector("#input-section input:first-of-type");
+        const toInput = document.querySelector("#input-section input:last-of-type");
+
+        const fromSelect = document.querySelectorAll("select")[0];
+        const toSelect = document.querySelectorAll("select")[1];
+
+        document.querySelectorAll("#types .card").forEach(card => {
             card.addEventListener("click", async () => {
 
-                // 1. Update state
                 state.type = card.dataset.type;
 
-                // 2. Set active UI
-                setActive(typeContainer, card, ".type-card");
+                setActive(typeSelector, card, ".card");
 
-                // 3. Reset inputs
-                const inputs = document.querySelectorAll("#input-section input");
-                inputs.forEach(input => input.value = "");
+                // Reset inputs
+                fromInput.value = "";
+                toInput.value = "";
 
-                // 4. Reset result
+                // Reset result
                 showResult(0, "");
 
                 try {
-                    // 5. Fetch units
                     const units = await getUnits(state.type);
 
-                    // 6. Populate dropdowns
-                    const selects = document.querySelectorAll("#input-section select");
+                    populateDropdown(fromSelect, units);
+                    populateDropdown(toSelect, units);
 
-                    populateDropdown(selects[0], units);
-                    populateDropdown(selects[1], units);
-
-                    // 7. Reset state units
+                    // Reset selected units in state
                     state.fromUnit = "";
                     state.toUnit = "";
+
                 } catch (error) {
-                    showError("Failed to load units");
+                    showError("Failed to load units.");
                 }
             });
         });
 
-        actionButtons.forEach(btn => {
+        document.querySelectorAll(".action-btn").forEach(btn => {
             btn.addEventListener("click", () => {
-                state.action = btn.innerText.trim();
-                setActive(actionContainer, btn, ".action-btn");
+
+                state.action = btn.dataset.action;
+
+                setActive(actionSelector, btn, ".action-btn");
+
                 const isArithmetic = state.action === "Arithmetic";
+
                 toggleOperators(isArithmetic);
-                toggleResult(isArithmetic); 
+                toggleResult(isArithmetic);
+
+                // Reset result
+                showResult(0, "");
             });
         });
     }
@@ -105,14 +112,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     async function loadHistory() {
-        const historyData = await getHistory();
+        try {
+            const historyData = await getHistory();
 
-        if (!historyData || historyData.length === 0) {
-            console.log("No history yet.");
-            return;
+            if (!historyData || historyData.length === 0) {
+                console.log("No history yet.");
+                return;
+            }
+
+            renderHistory(historyData);
+
+        } catch (error) {
+            console.error("Failed to load history");
         }
-
-        renderHistory(historyData);
     }
 
     function showError(message) {
