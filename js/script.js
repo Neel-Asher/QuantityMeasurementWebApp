@@ -1,4 +1,5 @@
 import { getUnits, getHistory } from "./api.js";
+import { applyConversion } from "./conversion.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -95,5 +96,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     function showError(message) {
         alert(message);
     }
-
 });
