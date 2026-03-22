@@ -31,3 +31,22 @@ export function populateDropdown(selectEl, units) {
         selectEl.appendChild(opt);
     });
 }
+
+export function setActive(parentEl, clickedEl, childSelector) {
+
+    // Safety check
+    if (!parentEl) {
+        console.warn("setActive: parent element not found");
+        return;
+    }
+
+    // Remove active from all siblings
+    const children = parentEl.querySelectorAll(childSelector);
+
+    children.forEach(el => el.classList.remove("active"));
+
+    // Add active to clicked element
+    if (clickedEl) {
+        clickedEl.classList.add("active");
+    }
+}

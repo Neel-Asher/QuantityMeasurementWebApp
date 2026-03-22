@@ -1,6 +1,6 @@
 import { getUnits, getHistory } from "./api.js";
 import { applyConversion, compareValues, performArithmetic } from "./conversion.js";
-import { populateDropdown } from "./ui.js";
+import { populateDropdown, setActive } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -29,18 +29,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     loadHistory();
 
     function attachEventListeners() {
+        const typeContainer = document.querySelector("#types");
+        const actionContainer = document.querySelector("#actions");
+
         const typeCards = document.querySelectorAll("#types .card");
         const actionButtons = document.querySelectorAll(".action-btn");
 
         typeCards.forEach(card => {
             card.addEventListener("click", () => {
                 state.type = card.innerText.trim();
+                setActive(typeContainer, card, ".card");
+                loadUnits(state.type);
             });
         });
 
         actionButtons.forEach(btn => {
             btn.addEventListener("click", () => {
                 state.action = btn.innerText.trim();
+                setActive(actionContainer, btn, ".action-btn");
             });
         });
     }
