@@ -1,5 +1,6 @@
 import { getUnits, getHistory } from "./api.js";
 import { applyConversion } from "./conversion.js";
+import { compareValues } from "./conversion.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
