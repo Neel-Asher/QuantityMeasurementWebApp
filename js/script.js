@@ -32,14 +32,41 @@ document.addEventListener("DOMContentLoaded", async () => {
         const typeContainer = document.querySelector("#types");
         const actionContainer = document.querySelector("#actions");
 
-        const typeCards = document.querySelectorAll("#types .card");
+        const typeCards = document.querySelectorAll(".type-card");
         const actionButtons = document.querySelectorAll(".action-btn");
 
         typeCards.forEach(card => {
-            card.addEventListener("click", () => {
-                state.type = card.innerText.trim();
-                setActive(typeContainer, card, ".card");
-                loadUnits(state.type);
+            card.addEventListener("click", async () => {
+
+                // 1. Update state
+                state.type = card.dataset.type;
+
+                // 2. Set active UI
+                setActive(typeContainer, card, ".type-card");
+
+                // 3. Reset inputs
+                const inputs = document.querySelectorAll("#input-section input");
+                inputs.forEach(input => input.value = "");
+
+                // 4. Reset result
+                showResult(0, "");
+
+                try {
+                    // 5. Fetch units
+                    const units = await getUnits(state.type);
+
+                    // 6. Populate dropdowns
+                    const selects = document.querySelectorAll("#input-section select");
+
+                    populateDropdown(selects[0], units);
+                    populateDropdown(selects[1], units);
+
+                    // 7. Reset state units
+                    state.fromUnit = "";
+                    state.toUnit = "";
+                } catch (error) {
+                    showError("Failed to load units");
+                }
             });
         });
 
