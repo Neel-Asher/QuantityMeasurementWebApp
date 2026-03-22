@@ -142,3 +142,23 @@ body {
     border:1px solid #ccc;
     color: #5B507A;
 }
+
+#result-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#result-value {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#result-unit {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.highlight {
+    background-color: #fff3cd;
+    transition: 0.3s;
+}

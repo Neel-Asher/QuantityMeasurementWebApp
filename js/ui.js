@@ -50,3 +50,33 @@ export function setActive(parentEl, clickedEl, childSelector) {
         clickedEl.classList.add("active");
     }
 }
+
+export function showResult(value, unitSymbol) {
+
+    const valueEl = document.querySelector("#result-value");
+    const unitEl = document.querySelector("#result-unit");
+
+    // Safety check
+    if (!valueEl || !unitEl) {
+        console.warn("showResult: result elements not found");
+        return;
+    }
+
+    // Handle null/invalid
+    if (value === null || value === undefined) {
+        valueEl.textContent = "—";
+        unitEl.textContent = "";
+        return;
+    }
+
+    // Set values
+    valueEl.textContent = value;
+    unitEl.textContent = unitSymbol || "";
+
+    // Highlight animation
+    valueEl.classList.add("highlight");
+
+    setTimeout(() => {
+        valueEl.classList.remove("highlight");
+    }, 1500);
+}

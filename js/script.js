@@ -1,6 +1,6 @@
 import { getUnits, getHistory } from "./api.js";
 import { applyConversion, compareValues, performArithmetic } from "./conversion.js";
-import { populateDropdown, setActive } from "./ui.js";
+import { populateDropdown, setActive, showResult } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
